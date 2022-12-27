@@ -1,0 +1,13 @@
+<Window x:Class="Screenshoter.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:Screenshoter"
+        mc:Ignorable="d"
+        Title="NocereomnisScreenshooter" Height="450" Width="800">
+    <Grid>
+        <TextBlock>Press to PRNTSCRN button to capture the screen</TextBlock>
+            <TextBlock x:Name="tblock"></TextBlock>
+    </Grid>
+</Window>
