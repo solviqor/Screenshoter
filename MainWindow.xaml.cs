@@ -5,6 +5,8 @@ using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Interop;
+using Screenshoter.Utilities;
+using Clipboard = System.Windows.Clipboard;
 
 namespace Screenshoter;
 
@@ -22,6 +24,7 @@ public partial class MainWindow : Window
         private static extern bool UnregisterHotKey(IntPtr hWnd, int id);
  
         private const int HOTKEY_ID = 0;
+        private bool isComplete = true;
  
         //Modifiers:
         private const uint MOD_NONE = 0x0000; //(none)
@@ -60,7 +63,12 @@ public partial class MainWindow : Window
                             //check if virtual key code equals to hot key
                             if (vkey == MOD_Q)
                             {
-                                tblock.Text += "Done" + Environment.NewLine;
+                                if (isComplete)
+                                {
+                                    isComplete = false;
+                                    var screenShot = new ScreenCaptureUtility().CaptureScreen(out isComplete);
+                                    Clipboard.SetDataObject(screenShot);
+                                }
                             }
                             handled = true;
                             break;
@@ -88,6 +96,7 @@ public partial class MainWindow : Window
         CreateContextMenu();
     }
     
+    //Tray icon menu
     private void CreateContextMenu()
     {
         _notifyIcon.ContextMenuStrip =
@@ -104,6 +113,7 @@ public partial class MainWindow : Window
         _notifyIcon = null;
     }
     
+    //show tray icon menu
     private void ShowMainWindow()
     {
         if (IsVisible)

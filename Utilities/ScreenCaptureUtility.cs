@@ -4,32 +4,45 @@ using System.Windows.Forms;
 
 namespace Screenshoter.Utilities;
 
-public class ScreenCapture
+public class ScreenCaptureUtility
 {
     private Rectangle canvasBounds = Screen.GetBounds(Point.Empty);
 
-    public ScreenCapture()
+    public ScreenCaptureUtility()
     {
         SetCanvas();
     }
-
-    public Bitmap GetSnapShot()
+    
+    public void SetCanvas()
     {
-        using (Image image = new Bitmap(canvasBounds.Width, canvasBounds.Height))
+        using (ScreenshotWindow screenshotWindow = new ScreenshotWindow())
         {
-            using (Graphics graphics = Graphics.FromImage(image))
+            if (screenshotWindow.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                graphics.CopyFromScreen(new Point
-                    (canvasBounds.Left, canvasBounds.Top), Point.Empty, canvasBounds.Size);
+                this.canvasBounds = screenshotWindow.GetRectangle();
             }
-            return new Bitmap(SetBorder(image, Color.Black, 1));
         }
     }
 
-    private Image SetBorder(Image srcImg, Color color, int width)
+    public Bitmap CaptureScreen(out bool isDone)
+    {
+        using (Bitmap bmp = new Bitmap(canvasBounds.Width, canvasBounds.Height))
+        {
+            using (Graphics g = Graphics.FromImage(bmp))
+            {
+                g.CopyFromScreen(new Point
+                    (canvasBounds.Left, canvasBounds.Top), Point.Empty, canvasBounds.Size);
+            }
+            isDone = true;
+            return new Bitmap(SetBorder(bmp, Color.CornflowerBlue, 1));
+
+        }
+    }
+
+    public Image SetBorder(Image img, Color color, float width)
     {
         // Create a copy of the image and graphics context
-        Image dstImg = srcImg.Clone() as Image;
+        Image? dstImg = img.Clone() as Image;
         Graphics g = Graphics.FromImage(dstImg);
             
         // Create the pen
@@ -37,10 +50,8 @@ public class ScreenCapture
         {
             Alignment = PenAlignment.Center
         };
-
-        // Draw
+        
         g.DrawRectangle(pBorder, 0, 0, dstImg.Width - 1, dstImg.Height - 1);
-
         // Clean up
         pBorder.Dispose();
         g.Save();
@@ -49,15 +60,4 @@ public class ScreenCapture
         // Return
         return dstImg;
     }
-
-    public void SetCanvas()
-    {
-        using (Canvas canvas = new Canvas())
-        {
-            if (canvas.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                this.canvasBounds = canvas.GetRectangle();
-            }
-        }
-    }   
 }

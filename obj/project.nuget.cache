@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "YOLZ4f2c9zYatZ1IAyExUZtttpTaCLlstF+8dnOSkbtvFYPUq4yHzdC7M7ZQNoA/CU82/rAB4NbU6ofHYh0xuw==",
+  "dgSpecHash": "6Hspbrq39L4nPNa708CLGOF9F7sJCUyC8IpTz6sgMXWQ9CRYzyH2c8B/1JfB6Ls9yGTzZ836OTjvDHOMfYYthA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\yeezo\\RiderProjects\\Screenshoter\\Screenshoter.csproj",
+  "projectFilePath": "E:\\Screenshoter\\Screenshoter.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\yeezo\\.nuget\\packages\\hardcodet.notifyicon.wpf\\1.1.0\\hardcodet.notifyicon.wpf.1.1.0.nupkg.sha512"
+    "C:\\Users\\yeezo\\.nuget\\packages\\hardcodet.notifyicon.wpf\\1.1.0\\hardcodet.notifyicon.wpf.1.1.0.nupkg.sha512",
+    "C:\\Users\\yeezo\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x86\\7.0.1\\microsoft.netcore.app.runtime.win-x86.7.0.1.nupkg.sha512",
+    "C:\\Users\\yeezo\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x86\\7.0.1\\microsoft.windowsdesktop.app.runtime.win-x86.7.0.1.nupkg.sha512",
+    "C:\\Users\\yeezo\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x86\\7.0.1\\microsoft.aspnetcore.app.runtime.win-x86.7.0.1.nupkg.sha512"
   ],
   "logs": []
 }
