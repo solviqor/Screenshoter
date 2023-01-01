@@ -6,16 +6,13 @@ namespace Screenshoter.Utilities;
 
 public static class BalloonNotify
 {
-    public static void CompletedMsg(string title, string msg)
+    public static void CompletedMsg(string title, string msg, NotifyIcon notifyIcon)
     {
-        var notifyIcon1 = new NotifyIcon();
-        notifyIcon1.Icon = SystemIcons.Exclamation;
-        notifyIcon1.BalloonTipTitle = title;
-        notifyIcon1.BalloonTipText = msg;
-        notifyIcon1.BalloonTipIcon = ToolTipIcon.Info;
-        notifyIcon1.Visible = true;
-        notifyIcon1.ShowBalloonTip(1000);
-
+        notifyIcon.BalloonTipTitle = title;
+        notifyIcon.BalloonTipText = msg;
+        notifyIcon.BalloonTipIcon = ToolTipIcon.Info;
+        notifyIcon.Visible = true;
+        notifyIcon.ShowBalloonTip(100);
     }
 
 }

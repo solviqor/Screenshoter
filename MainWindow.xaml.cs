@@ -68,7 +68,7 @@ public partial class MainWindow : Window
                                 {
                                     isComplete = false;
                                     var screenShot = new ScreenCaptureUtility().CaptureScreen(out isComplete);
-                                    BalloonNotify.CompletedMsg("Success", "Screenshot save in clipboard");
+                                    BalloonNotify.CompletedMsg("Success", "Screenshot save in clipboard", _notifyIcon);
                                     Clipboard.SetDataObject(screenShot);
                                 }
                             }

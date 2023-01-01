@@ -34,11 +34,8 @@ public partial class ScreenshotWindow : Form
     }
     private void KeyDownEvent(object sender, KeyEventArgs e)
     {
-        if (e.KeyCode == Keys.Escape)
-        {
             this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.Close();
-        }
     }
     private void MouseDownEvent(object sender, MouseEventArgs e)
     {
