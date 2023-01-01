@@ -34,7 +34,7 @@ public class ScreenCaptureUtility
                     (canvasBounds.Left, canvasBounds.Top), Point.Empty, canvasBounds.Size);
             }
             isDone = true;
-            return new Bitmap(SetBorder(bmp, Color.CornflowerBlue, 1));
+            return new Bitmap(SetBorder(bmp, Color.CornflowerBlue, 2));
 
         }
     }

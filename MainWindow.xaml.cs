@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Forms;
@@ -67,6 +68,7 @@ public partial class MainWindow : Window
                                 {
                                     isComplete = false;
                                     var screenShot = new ScreenCaptureUtility().CaptureScreen(out isComplete);
+                                    BalloonNotify.CompletedMsg("Success", "Screenshot save in clipboard");
                                     Clipboard.SetDataObject(screenShot);
                                 }
                             }
@@ -86,11 +88,11 @@ public partial class MainWindow : Window
         }
     public MainWindow()
     {
+        var startupPath = new Uri(@"Icon/Logo.ico", UriKind.Relative);
         Closing += MainWindow_Closing;
-        Close();
         _notifyIcon = new System.Windows.Forms.NotifyIcon();
         _notifyIcon.DoubleClick += (s, args) => ShowMainWindow();
-        _notifyIcon.Icon = new Icon( @"../../../Icon/Logo.ico");
+        _notifyIcon.Icon = new Icon(startupPath.ToString());
         _notifyIcon.Visible = true;
     
         CreateContextMenu();
@@ -122,7 +124,7 @@ public partial class MainWindow : Window
             {
                 WindowState = WindowState.Normal;
             }
-           Activate();
+            Activate();
         }
         else
         {

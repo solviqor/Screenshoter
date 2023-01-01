@@ -18,4 +18,10 @@
       </Compile>
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="Icon\Logo.ico">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>

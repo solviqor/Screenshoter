@@ -14,7 +14,7 @@ public partial class ScreenshotWindow : Form
 
     private static readonly Color borderColor = Color.CornflowerBlue;
     Pen pen = new Pen(borderColor,4);
-    Brush brush = Brushes.White;
+    Brush brush = Brushes.CornflowerBlue;
     
 
     public ScreenshotWindow()
